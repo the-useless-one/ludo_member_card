@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\usepackage{array}
+\usepackage{varwidth}
+\renewcommand\ULthickness{4pt}
+\setlength \ULdepth{6pt}
+
+\begin{document}
+    \newcolumntype{M}{>{\begin{varwidth}{3cm}}l<{\end{varwidth}}} 
+
+    \pgfmathsetmacro{\cardheight}{5}
+    \pgfmathsetmacro{\cardwidth}{8}
+    \pgfmathsetmacro{\stripwidth}{0.6}
+    \pgfmathsetmacro{\strippadding}{0.1}
+    \pgfmathsetmacro{\textpadding}{0.1}
+    \pgfmathsetmacro{\ruleheight}{0.15}
+
+    \begin{tikzpicture}
+        \node [minimum height=\cardheight cm, minimum width=\cardwidth cm]
+        (origin) at (0.5*\cardwidth,0.5*\cardheight) {};
+
+        \draw[rounded corners=0.2cm] (0,0) rectangle (\cardwidth,\cardheight);
+
+        \fill[black,rounded corners=0.1cm] (\strippadding,\strippadding)
+        rectangle (\strippadding+\stripwidth,\cardheight-\strippadding)
+        node[rotate=90,above left,white,font=\large]
+        {\textsc{LudoTech}\rotatebox[origin=c]{-90}{}};
+
+        \node[text width=(\cardwidth-\strippadding-\stripwidth
+            -2*\textpadding-0.3)*1cm, below right]
+        at (\strippadding+\stripwidth+\textpadding,\cardheight-\textpadding) {
+            {\Large Carte de membre}\\
+            \vspace{0.15cm}
+            \begin{minipage}[t]{4cm}
+                \begin{tabular}{ll}
+                    {\scriptsize \textbf{Prénom}} & : {\scriptsize \name}\\
+                    {\scriptsize \textbf{Nom}} & : {\scriptsize \surname}\\
+                    {\scriptsize \textbf{Surnom}} & : {\scriptsize \nickname}\\
+                    {\scriptsize \textbf{Promo}} & : {\scriptsize \promo}\\
+                \end{tabular}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[c]{2cm}
+                \includegraphics[height=1.7cm]{\image}\\
+            \end{minipage}
+
+        };
+
+        \node [anchor=south east] at (origin.south east)
+        {{\scriptsize \textit{\slogan}}
+        };
+
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \draw[rounded corners=0.2cm] (0,0) rectangle (\cardwidth,\cardheight);
+        \node at (0.5*\cardwidth,0.5*\cardheight) {
+            \includegraphics[width=4.9cm]{images/logo.png}
+        };
+    \end{tikzpicture}
+\end{document}
+
