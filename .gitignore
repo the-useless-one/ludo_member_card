@@ -6,4 +6,5 @@
 *.blg
 *.bak
 *.loa
-*.lof)
+*.lof
+*.pdf
