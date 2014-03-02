@@ -3,7 +3,7 @@ NAME=
 SURNAME=
 NICKNAME=
 PROMO=
-SLOGAN="Ludo ergo sum."
+SLOGAN=Ludo ergo sum
 IMAGE_PATH="images/photo"
 
 GARBAGE="(.*\.aux|.*\.log|.*\.out|.*\.toc|.*\.bbl|.*\.blg|.*\.bak|.*\.loa|.*\.lof)"
@@ -15,7 +15,7 @@ clean:
 	@find . -regextype posix-awk -regex $(GARBAGE) -exec rm {} \;
 
 mrproper: clean
-	@find . -name "$(PREFIX)_TELECOM_PDF.pdf" -exec rm {} \;
+	@find . -name "*.pdf" -exec rm {} \;
 
 .PHONY: card clean mrproper
 
